@@ -1,0 +1,28 @@
+.pro{
+    /* color: #524f4f; */
+    font-family: "Open Sans'";
+    font-size: 38;
+    font-weight: bolder;
+}
+
+.title{
+    /* color: #5f5b5b; */
+    font-family: "Open Sans', sans-serif";
+    font-size: 21px;
+    font-weight: bold;
+}
+
+.txts{
+    /* color: #A8A8A8; */
+    font-family: "Open Sans', sans-serif";
+    font-size: 21px;
+    font-weight: lighter;
+}
+
+.achieved {
+    background-color: #0b0d0e;
+    padding-top:4rem;
+    padding-bottom: 11rem;
+    color: white;
+  }
+  

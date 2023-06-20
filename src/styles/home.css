@@ -1,0 +1,35 @@
+.fix {
+  overflow: hidden;
+}
+
+.bg-image {
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 100vh;
+  background-color: #0b0d0e;
+}
+
+.home-row {
+  height: 100vh;
+  align-items: center;
+}
+
+.intro-section {
+  color: white;
+}
+
+.intro-section h1 {
+  font-size: 4rem;
+}
+.intro-section h2 {
+  font-size: 3rem;
+}
+.intro-section h3 {
+  font-size: 2rem;
+}
+.intro-section h5 {
+  font-size: 1.5rem;
+}

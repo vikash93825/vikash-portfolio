@@ -1,0 +1,77 @@
+.about {
+  min-height: 100vh;
+  background: #0b0d0e;
+  position: relative;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+}
+.skills-img {
+  position: absolute;
+  top: 0;
+  z-index: 0;
+}
+.resume-section {
+  margin-top: 1rem;
+}
+
+.resume-section h6 {
+  margin-bottom: 0;
+  margin-right: 1rem;
+}
+.resume-section a {
+  background: linear-gradient(to right, #56ccf2, #2f80ed);
+  padding: 0.1rem 0.5rem;
+  border-radius: 5px;
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+}
+
+.about-img {
+  height: auto;
+  object-fit: contain;
+  /* border-radius: 1rem; */
+}
+
+.about-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: white;
+}
+
+.tabs {
+  padding: 0.6rem;
+  border-radius: 10px;
+  cursor: pointer;
+  max-width: 13rem;
+  margin-bottom: 1.5rem;
+}
+.tab h5 {
+  margin: 0 !important;
+  margin-bottom: 4px !important;
+  margin-left: 1rem !important;
+}
+
+.custom-mr-3 {
+  margin-right: 1.5rem;
+}
+.custom-ml-3 {
+  margin-left: 1rem;
+}
+.active-tab {
+  background: linear-gradient(to right, #56ccf2, #2f80ed);
+}
+
+.about-sub-data {
+  padding: 1rem;
+  border-radius: 1rem;
+  background: linear-gradient(to right, #56cbf24b, #2f81ed4b);
+  box-shadow: 1px 2px 17px 0px rgba(0, 0, 0, 0.18);
+  -webkit-box-shadow: 1px 2px 17px 0px rgba(0, 0, 0, 0.18);
+  -moz-box-shadow: 1px 2px 17px 0px rgba(0, 0, 0, 0.18);
+}
