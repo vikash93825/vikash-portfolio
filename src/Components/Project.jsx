@@ -17,7 +17,7 @@ const myProjects = [
     description:
       "A website that provides the latest news and related stories on Indian startups.",
     source: "https://github.com/vikash93825/Yourstory-clone",
-    demoLink: "https://yourstory-clone.netlify.app/",
+    demoLink: "https://yourstory-clone-iota.vercel.app/",
   },
   {
     image: "/images/instagram.png",

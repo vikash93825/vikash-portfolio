@@ -18,7 +18,7 @@ const Home = () => {
                 <h5  className="mb-5">
                   Welcome to my world
                 </h5>
-                <h1  className="mb-4">
+                <h1 className="mb-4 w-100">
                   Hi, I'm <span className="chonburi-font green-text">Vikash</span>
                   Kumar
                 </h1>
