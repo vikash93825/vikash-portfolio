@@ -92,7 +92,7 @@ const Project = () => {
                   display: "flex",
                   flexDirection: "column",
                   overflow: "hidden",
-                  background: "rgba(255,255,255,0.05)",
+                  bgcolor: "background.paper",
                 }}
               >
                 <Box sx={{ position: "relative" }} className="img-section">
@@ -131,17 +131,9 @@ const Project = () => {
                       target="_blank"
                       rel="noreferrer"
                       variant="contained"
+                      color="primary"
                       fullWidth
-                      sx={{
-                        borderRadius: 999,
-                        background:
-                          "linear-gradient(90deg, rgba(6, 182, 212, 1), rgba(124, 58, 237, 1))",
-                        "&:hover": {
-                          background:
-                            "linear-gradient(90deg, rgba(6, 182, 212, 1), rgba(124, 58, 237, 1))",
-                          filter: "brightness(1.05)",
-                        },
-                      }}
+                      sx={{ borderRadius: 999 }}
                     >
                       Demo
                     </Button>

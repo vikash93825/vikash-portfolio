@@ -1,11 +1,20 @@
 import React from "react";
 import { Box, Container, Grid, Paper, Stack, Typography } from "@mui/material";
 import styles from "../styles/achieved.module.css";
-import GitHubCalendar from 'react-github-calendar';
+import GitHubCalendar from "react-github-calendar";
+import { themeTokens } from "../themeTokens";
 
 const Achieved = () => {
   return (
-    <div key="profi" id="achieved" className={styles.achieved}>
+    <Box
+      key="profi"
+      id="achieved"
+      className={styles.achieved}
+      sx={{
+        bgcolor: themeTokens.bg,
+        color: "text.primary",
+      }}
+    >
       <Container maxWidth="xl" sx={{ pt: 6, pb: 6 }}>
         <Box sx={{ textAlign: "center", mb: 4 }}>
           <Typography className={styles.pro} variant="h3">
@@ -68,7 +77,7 @@ const Achieved = () => {
               username="vikash93825"
               blockSize={16}
               blockMargin={4}
-              color={"hsl(203, 82%, 33%)"}
+              color="hsl(192, 78%, 32%)"
             />
           </Box>
         </Box>
@@ -90,14 +99,15 @@ const Achieved = () => {
               <Stack alignItems="center" spacing={1}>
                 <Box
                   sx={{
-                    border: "10px solid #128397",
+                    border: `10px solid ${themeTokens.cyanDark}`,
                     height: 110,
                     width: 110,
                     borderRadius: "999px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
-                    background: "rgba(255,255,255,0.03)",
+                    bgcolor: "background.paper",
+                    boxShadow: "0 8px 24px rgba(11, 31, 58, 0.08)",
                   }}
                 >
                   <Typography variant="h6" sx={{ fontWeight: 800 }}>
@@ -110,8 +120,8 @@ const Achieved = () => {
           ))}
         </Grid>
       </Container>
-    </div>
-  )
+    </Box>
+  );
 };
 
 export {Achieved};

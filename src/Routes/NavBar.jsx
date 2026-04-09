@@ -32,7 +32,7 @@ const NavBar = () => {
   );
 
   return (
-    <AppBar className="fixed" elevation={0} position="fixed">
+    <AppBar className="fixed" elevation={0} position="fixed" color="inherit">
       <Container maxWidth="xl">
         <Toolbar disableGutters sx={{ minHeight: { xs: 64, md: 72 } }}>
           <Typography
@@ -119,8 +119,9 @@ const NavBar = () => {
         PaperProps={{
           sx: {
             width: 280,
-            backgroundImage:
-              "radial-gradient(900px 600px at 30% 10%, rgba(6, 182, 212, 0.18), transparent 60%), radial-gradient(700px 500px at 80% 30%, rgba(124, 58, 237, 0.16), transparent 55%), linear-gradient(180deg, rgba(7,10,16,0.95), rgba(11,16,32,0.95))",
+            background:
+              "linear-gradient(180deg, #ffffff 0%, #e8f4fa 55%, #b8ecff 100%)",
+            borderRight: "1px solid rgba(11, 31, 58, 0.1)",
           },
         }}
       >

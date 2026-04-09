@@ -1,11 +1,9 @@
 import React from "react";
-import { Box, Button, Container, Grid, Stack, Typography } from "@mui/material";
+import { Box, Button, Container, Grid, Paper, Stack, Typography } from "@mui/material";
+import { themeTokens } from "../themeTokens";
 import "../styles/home.css";
-import ThreeBackground from "./ThreeBackground";
-
 
 const Home = () => {
-  
   return (
     <Box
       id="home"
@@ -13,18 +11,28 @@ const Home = () => {
       sx={{
         minHeight: "100vh",
         pt: { xs: 10, md: 12 },
+        background: `linear-gradient(165deg, ${themeTokens.cyanPale} 0%, ${themeTokens.bg} 38%, ${themeTokens.bgAlt} 100%)`,
       }}
     >
-      <ThreeBackground />
       <div className="bg-image">
         <Container maxWidth="xl" className="home-page-intro">
           <Grid container className="home-row" spacing={3}>
             <Grid item xs={12} md={8}>
-              <Box className="intro-section glass hero-card" sx={{ p: { xs: 2.5, md: 4 } }}>
+              <Paper
+                className="intro-section hero-card"
+                elevation={0}
+                sx={{
+                  p: { xs: 2.5, md: 4 },
+                  maxWidth: 820,
+                  border: `1px solid ${themeTokens.border}`,
+                  boxShadow: "0 16px 48px rgba(11, 31, 58, 0.08)",
+                  bgcolor: "rgba(255,255,255,0.92)",
+                }}
+              >
                 <Typography variant="h6" sx={{ mb: 3, color: "text.secondary" }}>
                   Welcome to my portfolio
                 </Typography>
-                <Typography variant="h2" sx={{ mb: 2, lineHeight: 1.1 }}>
+                <Typography variant="h2" sx={{ mb: 2, lineHeight: 1.1, color: "text.primary" }}>
                   Hi, I&apos;m{" "}
                   <span className="chonburi-font green-text">Vikash</span> Kumar
                 </Typography>
@@ -33,41 +41,14 @@ const Home = () => {
                 </Typography>
 
                 <Stack direction="row" spacing={1.5} sx={{ mt: 3, flexWrap: "wrap" }}>
-                  <Button
-                    href="#projects"
-                    variant="contained"
-                    sx={{
-                      borderRadius: 999,
-                      px: 2.25,
-                      py: 1.1,
-                      background:
-                        "linear-gradient(90deg, rgba(6, 182, 212, 1), rgba(124, 58, 237, 1))",
-                      boxShadow: "0 10px 30px rgba(0, 0, 0, 0.25)",
-                      "&:hover": {
-                        filter: "brightness(1.05)",
-                        background:
-                          "linear-gradient(90deg, rgba(6, 182, 212, 1), rgba(124, 58, 237, 1))",
-                      },
-                    }}
-                  >
+                  <Button href="#projects" variant="contained" color="primary" size="large">
                     View Projects
                   </Button>
-                  <Button
-                    href="#contact"
-                    variant="outlined"
-                    sx={{
-                      borderRadius: 999,
-                      px: 2.25,
-                      py: 1.1,
-                      borderColor: "rgba(255,255,255,0.18)",
-                      background: "rgba(255, 255, 255, 0.03)",
-                      "&:hover": { borderColor: "rgba(255,255,255,0.35)" },
-                    }}
-                  >
+                  <Button href="#contact" variant="outlined" color="secondary" size="large">
                     Contact
                   </Button>
                 </Stack>
-              </Box>
+              </Paper>
             </Grid>
           </Grid>
         </Container>
@@ -76,4 +57,4 @@ const Home = () => {
   );
 };
 
-export {Home};
+export { Home };

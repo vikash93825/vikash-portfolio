@@ -58,9 +58,12 @@ const Skills = () => {
                 sx={{
                   p: 2,
                   textAlign: "center",
-                  transition: "transform 160ms ease, background 160ms ease",
-                  background: "rgba(255,255,255,0.05)",
-                  "&:hover": { transform: "translateY(-2px)", background: "rgba(255,255,255,0.08)" },
+                  transition: "transform 160ms ease, box-shadow 160ms ease",
+                  bgcolor: "background.paper",
+                  "&:hover": {
+                    transform: "translateY(-2px)",
+                    boxShadow: "0 12px 28px rgba(11, 31, 58, 0.1)",
+                  },
                 }}
               >
                 <Avatar

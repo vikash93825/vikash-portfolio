@@ -1,10 +1,17 @@
 import React from "react";
 import { Box, Container, Divider, Paper, Stack, Typography } from "@mui/material";
 import "../styles/contact.css";
+import { themeTokens } from "../themeTokens";
 
 const Contact = () => {
   return (
-    <div className="contact-section-bg" id="contact">
+    <Box
+      className="contact-section-bg"
+      id="contact"
+      sx={{
+        background: `linear-gradient(180deg, ${themeTokens.bg} 0%, ${themeTokens.cyanPale} 35%, ${themeTokens.bg} 100%)`,
+      }}
+    >
       <Container maxWidth="xl" sx={{ pt: 6, pb: 6 }}>
         <Box sx={{ maxWidth: 720 }}>
           <Typography variant="h3" sx={{ mb: 2 }}>
@@ -25,7 +32,7 @@ const Contact = () => {
                 <Typography variant="h6">+91 9382579600</Typography>
               </Stack>
 
-              <Divider sx={{ borderColor: "rgba(255,255,255,0.12)" }} />
+              <Divider sx={{ borderColor: themeTokens.border }} />
 
               <Stack spacing={0.25}>
                 <Typography variant="subtitle2" sx={{ color: "text.secondary" }}>
@@ -34,7 +41,7 @@ const Contact = () => {
                 <Typography variant="h6">vikashkumar.kk@gmail.com</Typography>
               </Stack>
 
-              <Divider sx={{ borderColor: "rgba(255,255,255,0.12)" }} />
+              <Divider sx={{ borderColor: themeTokens.border }} />
 
               <Stack spacing={0.25}>
                 <Typography variant="subtitle2" sx={{ color: "text.secondary" }}>
@@ -46,7 +53,7 @@ const Contact = () => {
           </Paper>
         </Box>
       </Container>
-    </div>
+    </Box>
   );
 };
 

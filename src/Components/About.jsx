@@ -1,190 +1,391 @@
 import React from "react";
 import {
+  Avatar,
   Box,
   Button,
-  Container,
-  Divider,
   Grid,
-  List,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
   Paper,
   Stack,
   Typography,
+  useMediaQuery,
+  useTheme,
 } from "@mui/material";
-import LocalLibraryIcon from "@mui/icons-material/LocalLibrary";
+import SchoolIcon from "@mui/icons-material/School";
+import WorkIcon from "@mui/icons-material/Work";
+import { themeTokens as tk } from "../themeTokens";
 import "../styles/about.css";
 
-const About = () => {
+const NAVY = tk.navy;
+const CYAN = tk.cyan;
+const CYAN_SOFT = tk.cyanSoft;
+const SIDEBAR_TOP = tk.cyanPale;
+const SIDEBAR_MID = tk.cyanSoft;
+const RIBBON = tk.cyanDark;
+
+const resumeRows = [
+  {
+    education: {
+      date: "2016 – 2020",
+      title: "B.TECH — INFORMATION TECHNOLOGY",
+      body:
+        "Graduated from Haldia Institute of Technology with a strong foundation in software engineering and web technologies.",
+    },
+    employment: {
+      date: "03/2021 – 12/2021",
+      title: "FRONTEND DEVELOPER, ONEZEROPOINT TECHNOLOGIES",
+      body:
+        "Built reusable React components with Redux-Saga, shipped responsive UIs, and integrated REST APIs into production apps.",
+    },
+  },
+  {
+    education: {
+      date: "2019 – 2020",
+      title: "MASAI SCHOOL — INTENSIVE TRAINING",
+      body:
+        "Completed full-time training in HTML5, CSS, JavaScript, React, and Redux with a focus on real-world product builds.",
+    },
+    employment: {
+      date: "01/2022 – PRESENT",
+      title: "SOFTWARE ENGINEER (FRONTEND), SIVIVE ENTERPRISE",
+      body:
+        "Delivered React + Material UI experiences with lazy-loaded features, performance-minded architecture, and API integration.",
+    },
+  },
+];
+
+function TimelineCard({ side, date, title, body }) {
+  const isEdu = side === "left";
   return (
-    <div id="about" className="about pb-6 pt-6">
-      <Container maxWidth="xl">
-        <Grid container spacing={4} alignItems="center">
-          <Grid item xs={12} md={5} sx={{ textAlign: "center" }}>
-            <Box
-              component="img"
-              className="about-img glass"
-              src="/images/vikash.JPG"
-              alt="Vikash Kumar"
-              sx={{ maxWidth: { xs: 280, md: 360 }, width: "100%" }}
-            />
-          </Grid>
-          <Grid item xs={12} md={7}>
-            <Box className="about-info">
-              <Typography variant="h3" sx={{ mb: 3 }}>
-                <span className="chonburi-font green-text">Abo</span>ut Me
-              </Typography>
+    <Paper
+      variant="outlined"
+      sx={{
+        p: 2.25,
+        height: "100%",
+        borderColor: "rgba(11, 31, 58, 0.14)",
+        bgcolor: tk.paper,
+        boxShadow: "0 1px 0 rgba(11, 31, 58, 0.04)",
+        textAlign: isEdu ? { xs: "left", md: "right" } : "left",
+      }}
+    >
+      <Typography
+        variant="subtitle2"
+        sx={{
+          color: isEdu ? CYAN : NAVY,
+          fontWeight: 600,
+          mb: 0.75,
+          letterSpacing: "0.02em",
+        }}
+      >
+        {date}
+      </Typography>
+      <Typography
+        variant="subtitle1"
+        sx={{
+          fontWeight: 800,
+          color: NAVY,
+          letterSpacing: "0.06em",
+          fontSize: "0.82rem",
+          lineHeight: 1.35,
+          mb: 1,
+        }}
+      >
+        {title}
+      </Typography>
+      <Typography variant="body2" sx={{ color: "rgba(11, 31, 58, 0.72)", lineHeight: 1.6 }}>
+        {body}
+      </Typography>
+    </Paper>
+  );
+}
 
-              <Typography sx={{ color: "text.secondary", mb: 2 }}>
-                I am a full-time coder molded and shaped by Masai School. With
-                time coding has become a huge part of my life and I am
-                determined to push relevant codes on GitHub every day. I love to
-                take on new projects and learn new things as it satisfies me.
-              </Typography>
+function TimelineDot({ variant }) {
+  return (
+    <Box
+      sx={{
+        width: 14,
+        height: 14,
+        borderRadius: "50%",
+        bgcolor: variant === "dark" ? NAVY : CYAN_SOFT,
+        border: "3px solid #ffffff",
+        boxShadow: `0 0 0 2px ${CYAN_SOFT}`,
+        flexShrink: 0,
+        zIndex: 2,
+      }}
+    />
+  );
+}
 
-              <Stack direction="row" spacing={1.25} alignItems="center" sx={{ mt: 2 }}>
-                <Typography variant="subtitle1" sx={{ fontWeight: 700 }}>
-                  Resume
-                </Typography>
-                <Button
-                  href="https://drive.google.com/file/d/1ydOxcH2GInRWH369bBOwlbZ8-Wu8QxKG/view?usp=sharing"
-                  target="_blank"
-                  rel="noreferrer"
-                  variant="outlined"
-                  size="small"
-                  sx={{ borderRadius: 999 }}
-                >
-                  View
-                </Button>
-              </Stack>
+const About = () => {
+  const theme = useTheme();
+  const isWide = useMediaQuery(theme.breakpoints.up("md"));
 
-              <Paper sx={{ mt: 4, p: { xs: 2, md: 3 } }}>
-                <Stack direction="row" spacing={1} alignItems="center" sx={{ mb: 1 }}>
-                  <LocalLibraryIcon />
-                  <Typography variant="h6">Professional Experience</Typography>
-                </Stack>
-                <Divider sx={{ mb: 2, borderColor: "rgba(255,255,255,0.12)" }} />
+  return (
+    <Box
+      id="about"
+      component="section"
+      className="about-resume-root"
+      sx={{
+        bgcolor: tk.bg,
+        color: NAVY,
+        overflow: "hidden",
+      }}
+    >
+      <Grid container sx={{ minHeight: { md: "min(100vh, 920px)" } }}>
+        {/* Sidebar */}
+        <Grid
+          item
+          xs={12}
+          md={4}
+          lg={3.5}
+          sx={{
+            position: "relative",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            pt: { xs: 5, md: 7 },
+            pb: { xs: 8, md: 10 },
+            px: 3,
+            background: `linear-gradient(180deg, ${SIDEBAR_TOP} 0%, ${SIDEBAR_MID} 55%, #5ecfff 100%)`,
+          }}
+        >
+          <Box
+            className="about-sidebar-ribbon"
+            aria-hidden
+            sx={{
+              position: "absolute",
+              bottom: 0,
+              left: 0,
+              right: 0,
+              height: { xs: 100, md: 140 },
+              bgcolor: RIBBON,
+              clipPath: "polygon(0 35%, 100% 0%, 100% 100%, 0% 100%)",
+              opacity: 0.95,
+            }}
+          />
+          <Box
+            className="about-sidebar-ribbon-accent"
+            aria-hidden
+            sx={{
+              position: "absolute",
+              bottom: 0,
+              left: 0,
+              right: "18%",
+              height: { xs: 72, md: 100 },
+              bgcolor: "#0e7490",
+              clipPath: "polygon(0 55%, 100% 15%, 100% 100%, 0% 100%)",
+              opacity: 0.85,
+            }}
+          />
 
-                <Typography variant="subtitle1" sx={{ fontWeight: 700 }}>
-                  Software Engineer - Frontend, Sivive Enterprise Solutions Private Limited
-                </Typography>
-                <Typography variant="body2" sx={{ color: "text.secondary", mb: 1 }}>
-                  01/2022 – present
-                </Typography>
-                <List dense sx={{ py: 0 }}>
-                  <ListItem sx={{ px: 0 }}>
-                    <ListItemIcon sx={{ minWidth: 32 }}>
-                      <Box
-                        sx={{
-                          width: 8,
-                          height: 8,
-                          borderRadius: 99,
-                          background:
-                            "linear-gradient(90deg, rgba(6,182,212,1), rgba(124,58,237,1))",
-                        }}
-                      />
-                    </ListItemIcon>
-                    <ListItemText primary="Built a React Website using Material-UI which uses the lazy loading concept to test and provide new features." />
-                  </ListItem>
-                  <ListItem sx={{ px: 0 }}>
-                    <ListItemIcon sx={{ minWidth: 32 }}>
-                      <Box
-                        sx={{
-                          width: 8,
-                          height: 8,
-                          borderRadius: 99,
-                          background:
-                            "linear-gradient(90deg, rgba(6,182,212,1), rgba(124,58,237,1))",
-                        }}
-                      />
-                    </ListItemIcon>
-                    <ListItemText primary="Integrate the API with frontend design." />
-                  </ListItem>
-                </List>
+          <Avatar
+            src="/images/vikash.JPG"
+            alt="Vikash Kumar"
+            sx={{
+              width: { xs: 200, sm: 220 },
+              height: { xs: 260, sm: 288 },
+              borderRadius: "32% / 48%",
+              border: "4px solid rgba(255,255,255,0.95)",
+              boxShadow: "0 18px 40px rgba(11, 31, 58, 0.18)",
+              zIndex: 1,
+            }}
+          />
 
-                <Divider sx={{ my: 2, borderColor: "rgba(255,255,255,0.12)" }} />
+          <Typography
+            variant="h4"
+            sx={{
+              mt: 3,
+              fontWeight: 800,
+              color: NAVY,
+              textAlign: "center",
+              zIndex: 1,
+            }}
+          >
+            Vikash Kumar
+          </Typography>
+          <Typography
+            sx={{
+              mt: 1.5,
+              maxWidth: 280,
+              textAlign: "center",
+              color: "rgba(11, 31, 58, 0.82)",
+              fontSize: "0.95rem",
+              lineHeight: 1.55,
+              zIndex: 1,
+            }}
+          >
+            Hi, I&apos;m a professional frontend developer focused on fast, accessible, and
+            polished web experiences.
+          </Typography>
 
-                <Typography variant="subtitle1" sx={{ fontWeight: 700 }}>
-                  Frontend Developer, OneZeroPoint Technologies
-                </Typography>
-                <Typography variant="body2" sx={{ color: "text.secondary", mb: 1 }}>
-                  03/2021 – 12/2021
-                </Typography>
-                <List dense sx={{ py: 0 }}>
-                  <ListItem sx={{ px: 0 }}>
-                    <ListItemIcon sx={{ minWidth: 32 }}>
-                      <Box
-                        sx={{
-                          width: 8,
-                          height: 8,
-                          borderRadius: 99,
-                          background:
-                            "linear-gradient(90deg, rgba(6,182,212,1), rgba(124,58,237,1))",
-                        }}
-                      />
-                    </ListItemIcon>
-                    <ListItemText primary="Developed multiple reusable components using React, Semantic-UI, and Redux-Saga." />
-                  </ListItem>
-                  <ListItem sx={{ px: 0 }}>
-                    <ListItemIcon sx={{ minWidth: 32 }}>
-                      <Box
-                        sx={{
-                          width: 8,
-                          height: 8,
-                          borderRadius: 99,
-                          background:
-                            "linear-gradient(90deg, rgba(6,182,212,1), rgba(124,58,237,1))",
-                        }}
-                      />
-                    </ListItemIcon>
-                    <ListItemText primary="Design dynamic and browser-compatible pages using React js." />
-                  </ListItem>
-                  <ListItem sx={{ px: 0 }}>
-                    <ListItemIcon sx={{ minWidth: 32 }}>
-                      <Box
-                        sx={{
-                          width: 8,
-                          height: 8,
-                          borderRadius: 99,
-                          background:
-                            "linear-gradient(90deg, rgba(6,182,212,1), rgba(124,58,237,1))",
-                        }}
-                      />
-                    </ListItemIcon>
-                    <ListItemText primary="Integrate the API with the front-end design." />
-                  </ListItem>
-                </List>
-              </Paper>
-
-              <Paper sx={{ mt: 3, p: { xs: 2, md: 3 } }}>
-                <Stack direction="row" spacing={1} alignItems="center" sx={{ mb: 1 }}>
-                  <LocalLibraryIcon />
-                  <Typography variant="h6">Education</Typography>
-                </Stack>
-                <Divider sx={{ mb: 2, borderColor: "rgba(255,255,255,0.12)" }} />
-
-                <Typography variant="subtitle1" sx={{ fontWeight: 700 }}>
-                  Masai School
-                </Typography>
-                <Typography sx={{ color: "text.secondary", mb: 2 }}>
-                  Completed (HTML5, CSS, JavaScript, React, Redux.) Training from Masai
-                  School, Bangalore.
-                </Typography>
-
-                <Typography variant="subtitle1" sx={{ fontWeight: 700 }}>
-                  B.tech
-                </Typography>
-                <Typography sx={{ color: "text.secondary" }}>
-                  Graduated in Information Technology engineering from Haldia institute of
-                  Technology in 2020.
-                </Typography>
-              </Paper>
-            </Box>
-          </Grid>
+          <Button
+            href="https://drive.google.com/file/d/1ydOxcH2GInRWH369bBOwlbZ8-Wu8QxKG/view?usp=sharing"
+            target="_blank"
+            rel="noreferrer"
+            variant="contained"
+            sx={{
+              mt: 3,
+              zIndex: 1,
+              borderRadius: 999,
+              px: 3,
+              fontWeight: 700,
+              bgcolor: NAVY,
+              "&:hover": { bgcolor: "#152a4a" },
+            }}
+          >
+            View resume
+          </Button>
         </Grid>
-      </Container>
-    </div>
+
+        {/* Main resume */}
+        <Grid item xs={12} md={8} lg={8.5} sx={{ bgcolor: tk.paper }}>
+          <Box sx={{ px: { xs: 2, sm: 3, md: 5 }, py: { xs: 4, md: 5 } }}>
+            <Typography
+              component="h2"
+              sx={{
+                textAlign: "center",
+                fontWeight: 700,
+                fontSize: { xs: "1.05rem", sm: "1.2rem", md: "1.35rem" },
+                lineHeight: 1.45,
+                px: { xs: 0, sm: 2 },
+              }}
+            >
+              <Box component="span" sx={{ color: NAVY }}>
+                Personal Portfolio{" "}
+              </Box>
+              <Box component="span" sx={{ color: CYAN }}>
+                of Frontend Developer and Web Developer
+              </Box>
+            </Typography>
+
+            <Typography
+              variant="h3"
+              sx={{
+                mt: 4,
+                textAlign: "center",
+                fontWeight: 900,
+                letterSpacing: "0.28em",
+                fontSize: { xs: "1.5rem", md: "1.85rem" },
+                color: NAVY,
+              }}
+            >
+              RESUME
+            </Typography>
+
+            <Grid container spacing={0} sx={{ mt: 1, mb: 3 }} alignItems="flex-end">
+              <Grid item xs={5}>
+                <Stack
+                  direction="column"
+                  alignItems={{ xs: "flex-start", md: "flex-end" }}
+                  spacing={0.5}
+                >
+                  <SchoolIcon sx={{ color: CYAN, fontSize: 32 }} />
+                  <Typography
+                    variant="overline"
+                    sx={{ color: NAVY, fontWeight: 800, letterSpacing: "0.2em" }}
+                  >
+                    Education
+                  </Typography>
+                </Stack>
+              </Grid>
+              <Grid item xs={2} />
+              <Grid item xs={5}>
+                <Stack direction="column" alignItems="flex-start" spacing={0.5}>
+                  <WorkIcon sx={{ color: CYAN, fontSize: 32 }} />
+                  <Typography
+                    variant="overline"
+                    sx={{ color: NAVY, fontWeight: 800, letterSpacing: "0.2em" }}
+                  >
+                    Employment
+                  </Typography>
+                </Stack>
+              </Grid>
+            </Grid>
+
+            <Box sx={{ position: "relative", mt: 2 }}>
+              {isWide && (
+                <Box
+                  aria-hidden
+                  sx={{
+                    position: "absolute",
+                    left: "50%",
+                    transform: "translateX(-50%)",
+                    top: 24,
+                    bottom: 24,
+                    width: 3,
+                    borderRadius: 1,
+                    bgcolor: CYAN_SOFT,
+                    zIndex: 0,
+                  }}
+                />
+              )}
+
+              {!isWide && (
+                <Box
+                  aria-hidden
+                  sx={{
+                    position: "absolute",
+                    left: 10,
+                    top: 28,
+                    bottom: 28,
+                    width: 3,
+                    borderRadius: 1,
+                    bgcolor: CYAN_SOFT,
+                    zIndex: 0,
+                  }}
+                />
+              )}
+
+              <Stack spacing={3}>
+                {resumeRows.map((row, index) => (
+                  <Box key={index}>
+                    {isWide ? (
+                      <Grid container spacing={2} alignItems="stretch">
+                        <Grid item xs={5}>
+                          <TimelineCard side="left" {...row.education} />
+                        </Grid>
+                        <Grid
+                          item
+                          xs={2}
+                          sx={{
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center",
+                            position: "relative",
+                            minHeight: 80,
+                          }}
+                        >
+                          <TimelineDot variant={index % 2 === 0 ? "light" : "dark"} />
+                        </Grid>
+                        <Grid item xs={5}>
+                          <TimelineCard side="right" {...row.employment} />
+                        </Grid>
+                      </Grid>
+                    ) : (
+                      <Box sx={{ position: "relative", pl: 4 }}>
+                        <Box
+                          sx={{
+                            position: "absolute",
+                            left: 3,
+                            top: 28,
+                            zIndex: 1,
+                          }}
+                        >
+                          <TimelineDot variant={index % 2 === 0 ? "light" : "dark"} />
+                        </Box>
+                        <Stack spacing={2}>
+                          <TimelineCard side="left" {...row.education} />
+                          <TimelineCard side="right" {...row.employment} />
+                        </Stack>
+                      </Box>
+                    )}
+                  </Box>
+                ))}
+              </Stack>
+            </Box>
+          </Box>
+        </Grid>
+      </Grid>
+    </Box>
   );
 };
 

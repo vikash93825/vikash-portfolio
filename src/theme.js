@@ -1,59 +1,90 @@
 import { createTheme } from "@mui/material/styles";
+import { themeTokens as t } from "./themeTokens";
 
 export const theme = createTheme({
   palette: {
-    mode: "dark",
+    mode: "light",
     primary: {
-      main: "#06b6d4",
+      main: t.cyan,
+      dark: t.cyanDark,
+      contrastText: "#ffffff",
     },
     secondary: {
-      main: "#7c3aed",
+      main: t.navy,
+      contrastText: "#ffffff",
     },
     background: {
-      default: "#070a10",
-      paper: "rgba(255, 255, 255, 0.06)",
+      default: t.bg,
+      paper: t.paper,
     },
     text: {
-      primary: "rgba(255, 255, 255, 0.92)",
-      secondary: "rgba(255, 255, 255, 0.68)",
+      primary: t.navy,
+      secondary: t.navyMuted,
     },
+    divider: t.border,
   },
   shape: {
-    borderRadius: 18,
+    borderRadius: 16,
   },
   typography: {
     fontFamily: ['"Quicksand"', "system-ui", "-apple-system", "Segoe UI", "Roboto", "Arial"].join(
       ","
     ),
-    h1: { fontFamily: '"Varela", sans-serif', letterSpacing: "2px" },
-    h2: { fontFamily: '"Varela", sans-serif', letterSpacing: "2px" },
-    h3: { fontFamily: '"Varela", sans-serif', letterSpacing: "2px" },
-    h4: { fontFamily: '"Varela", sans-serif', letterSpacing: "2px" },
-    h5: { fontFamily: '"Varela", sans-serif', letterSpacing: "2px" },
-    h6: { fontFamily: '"Varela", sans-serif', letterSpacing: "2px" },
+    h1: { fontFamily: '"Varela", sans-serif', letterSpacing: "1px" },
+    h2: { fontFamily: '"Varela", sans-serif', letterSpacing: "1px" },
+    h3: { fontFamily: '"Varela", sans-serif', letterSpacing: "1px" },
+    h4: { fontFamily: '"Varela", sans-serif', letterSpacing: "1px" },
+    h5: { fontFamily: '"Varela", sans-serif', letterSpacing: "1px" },
+    h6: { fontFamily: '"Varela", sans-serif', letterSpacing: "1px" },
     button: { textTransform: "none", fontWeight: 600 },
   },
   components: {
+    MuiCssBaseline: {
+      styleOverrides: {
+        body: {
+          backgroundColor: t.bg,
+          color: t.navy,
+        },
+      },
+    },
     MuiPaper: {
       styleOverrides: {
         root: {
-          border: "1px solid rgba(255,255,255,0.12)",
-          backdropFilter: "blur(10px)",
-          WebkitBackdropFilter: "blur(10px)",
-          boxShadow: "0 12px 40px rgba(0, 0, 0, 0.35)",
+          backgroundImage: "none",
+          border: `1px solid ${t.border}`,
+          boxShadow: "0 8px 30px rgba(11, 31, 58, 0.06)",
         },
       },
     },
     MuiAppBar: {
       styleOverrides: {
         root: {
-          background: "rgba(7,10,16,0.6)",
-          borderBottom: "1px solid rgba(255,255,255,0.10)",
-          backdropFilter: "blur(10px)",
-          WebkitBackdropFilter: "blur(10px)",
+          background: "rgba(255, 255, 255, 0.9)",
+          borderBottom: `1px solid ${t.border}`,
+          backdropFilter: "blur(12px)",
+          WebkitBackdropFilter: "blur(12px)",
+          color: t.navy,
+        },
+      },
+    },
+    MuiButton: {
+      styleOverrides: {
+        outlined: {
+          borderColor: t.borderStrong,
+          color: t.navy,
+          "&:hover": {
+            borderColor: t.cyan,
+            backgroundColor: "rgba(43, 184, 224, 0.06)",
+          },
+        },
+        containedPrimary: {
+          background: t.gradientVibrant,
+          "&:hover": {
+            background: t.gradientVibrant,
+            filter: "brightness(1.04)",
+          },
         },
       },
     },
   },
 });
-
