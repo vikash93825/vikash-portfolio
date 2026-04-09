@@ -1,5 +1,16 @@
 import React from "react";
-import { Col, Row } from "react-bootstrap";
+import {
+  Box,
+  Button,
+  Card,
+  CardActions,
+  CardContent,
+  CardMedia,
+  Container,
+  Grid,
+  Stack,
+  Typography,
+} from "@mui/material";
 import "../styles/project.css";
 
 const myProjects = [
@@ -64,53 +75,83 @@ const myProjects = [
 const Project = () => {
   return (
     <div className="projects" id="projects">
-      <div className="container pt-6 pb-6">
-        <div className="heading-section">
-          <h1>
+      <Container maxWidth="xl" sx={{ pt: 6, pb: 6 }}>
+        <Box className="heading-section" sx={{ textAlign: "center", mb: 4 }}>
+          <Typography variant="h3">
             <span className="chonburi-font green-text">Pro</span>jects
-          </h1>
-        </div>
-        <div className="projects-cards">
-          <Row className="justify-content-center">
-            {myProjects.map((project) => {
-              return (
-                <Col md={4} className="mb-5">
-                  <div className="project-card">
-                    <div className="img-section">
-                      <img src={project.image} alt="" />
-                      <div className="imageCardEffect"></div>
-                    </div>
-                    <div className="project-info">
-                      <h5 className="color-white font-weight-bold">
-                        {project.title}
-                      </h5>
-                      <p className="color-white">{project.description}</p>
-                      <div className="d-flex justify-content-between mr-4">
-                        <a
-                          href={project.source}
-                          className="project-card-btn"
-                          target="_blank"
-                          rel="noreferrer"
-                        >
-                          Source Code
-                        </a>
-                        <a
-                          href={project.demoLink}
-                          className="project-card-btn"
-                          target="_blank"
-                          rel="noreferrer"
-                        >
-                          Live Demo
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </Col>
-              );
-            })}
-          </Row>
-        </div>
-      </div>
+          </Typography>
+        </Box>
+
+        <Grid container spacing={3}>
+          {myProjects.map((project) => (
+            <Grid key={project.title} item xs={12} sm={6} md={4}>
+              <Card
+                className="project-card"
+                sx={{
+                  height: "100%",
+                  display: "flex",
+                  flexDirection: "column",
+                  overflow: "hidden",
+                  background: "rgba(255,255,255,0.05)",
+                }}
+              >
+                <Box sx={{ position: "relative" }} className="img-section">
+                  <CardMedia
+                    component="img"
+                    image={project.image}
+                    alt={project.title}
+                    sx={{ height: 210 }}
+                  />
+                  <Box className="imageCardEffect" sx={{ pointerEvents: "none" }} />
+                </Box>
+
+                <CardContent sx={{ flexGrow: 1 }}>
+                  <Typography variant="h6" sx={{ fontWeight: 800, mb: 1 }}>
+                    {project.title}
+                  </Typography>
+                  <Typography sx={{ color: "text.secondary" }}>
+                    {project.description}
+                  </Typography>
+                </CardContent>
+
+                <CardActions sx={{ px: 2, pb: 2 }}>
+                  <Stack direction="row" spacing={1} sx={{ width: "100%" }}>
+                    <Button
+                      href={project.source}
+                      target="_blank"
+                      rel="noreferrer"
+                      variant="outlined"
+                      fullWidth
+                      sx={{ borderRadius: 999 }}
+                    >
+                      Source
+                    </Button>
+                    <Button
+                      href={project.demoLink}
+                      target="_blank"
+                      rel="noreferrer"
+                      variant="contained"
+                      fullWidth
+                      sx={{
+                        borderRadius: 999,
+                        background:
+                          "linear-gradient(90deg, rgba(6, 182, 212, 1), rgba(124, 58, 237, 1))",
+                        "&:hover": {
+                          background:
+                            "linear-gradient(90deg, rgba(6, 182, 212, 1), rgba(124, 58, 237, 1))",
+                          filter: "brightness(1.05)",
+                        },
+                      }}
+                    >
+                      Demo
+                    </Button>
+                  </Stack>
+                </CardActions>
+              </Card>
+            </Grid>
+          ))}
+        </Grid>
+      </Container>
     </div>
   );
 };

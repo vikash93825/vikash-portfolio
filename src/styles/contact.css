@@ -2,19 +2,19 @@
 .heading-section {
     text-align: center;
     margin-bottom: 4rem;
-    color: white;
+    color: var(--text);
   }
   
   .contact-section-bg {
-    background-color: #0b0d0e;
+    background-color: transparent;
     background-repeat: no-repeat;
     background-size: cover;
     object-fit: cover;
-    color: white;
+    color: var(--text);
   }
   
   .form-textfield-input {
-    color: white !important;
+    color: var(--text) !important;
   }
   .form-textfield {
     border-color: aliceblue !important;

@@ -1,6 +1,6 @@
 import React from "react";
-import { Col, Row } from "react-bootstrap";
-import "../styles/skills.css"
+import { Avatar, Box, Container, Grid, Paper, Typography } from "@mui/material";
+import "../styles/skills.css";
 
 const skills = [
   { 
@@ -43,25 +43,46 @@ const skills = [
 const Skills = () => {
   return (
     <div id="skills" className="skills-section">
-      <div className="container">
-        <div className="heading-section">
-          <h1>
+      <Container maxWidth="xl">
+        <Box className="heading-section" sx={{ textAlign: "center", mb: 4 }}>
+          <Typography variant="h3">
             <span className="chonburi-font green-text">Ski</span>lls
-          </h1>
-        </div>
-        <Row>
-          {skills.map((skill) => {
-            return (
-              <Col key={skill.id}>
-                <div className="skills">
-                  <img src={skill.logo} alt="" />
-                  <h6>{skill.name}</h6>
-                </div>
-              </Col>
-            );
-          })}
-        </Row>
-      </div>
+          </Typography>
+        </Box>
+
+        <Grid container spacing={2.25} justifyContent="center">
+          {skills.map((skill) => (
+            <Grid key={skill.id} item xs={6} sm={4} md={3} lg={2.4}>
+              <Paper
+                className="skills"
+                sx={{
+                  p: 2,
+                  textAlign: "center",
+                  transition: "transform 160ms ease, background 160ms ease",
+                  background: "rgba(255,255,255,0.05)",
+                  "&:hover": { transform: "translateY(-2px)", background: "rgba(255,255,255,0.08)" },
+                }}
+              >
+                <Avatar
+                  src={skill.logo}
+                  alt={skill.name}
+                  sx={{
+                    width: 56,
+                    height: 56,
+                    mx: "auto",
+                    mb: 1.25,
+                    bgcolor: "transparent",
+                  }}
+                  variant="rounded"
+                />
+                <Typography variant="subtitle1" sx={{ fontWeight: 700 }}>
+                  {skill.name}
+                </Typography>
+              </Paper>
+            </Grid>
+          ))}
+        </Grid>
+      </Container>
     </div>
   );
 };
