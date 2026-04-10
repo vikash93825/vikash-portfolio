@@ -2,46 +2,48 @@
   position: fixed;
   top: 0;
   width: 100vw;
-  z-index: 100;
-  background: rgba(255, 255, 255, 0.86);
-  border-bottom: 1px solid rgba(11, 31, 58, 0.1);
-  -webkit-backdrop-filter: blur(12px);
-  backdrop-filter: blur(12px);
-  padding-top: 0.6rem;
-  padding-bottom: 0.6rem;
+  z-index: 1100;
+  background: rgba(0, 0, 0, 0.55);
+  border-bottom: 1px solid rgba(148, 163, 184, 0.15);
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
 }
+
+.logo-pill {
+  font-family: "Inter", monospace !important;
+  font-size: 0.85rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.04em !important;
+}
+
 .logo {
   font-size: 2rem;
   font-family: "Monoton", cursive !important;
   font-weight: bold;
-  background: var(--brand);
+  background: linear-gradient(90deg, #2dd4bf, #22d3ee);
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  position: relative;
-}
-.nav {
-  font-size: 1rem;
-  color: var(--text);
 }
 
 .nav_item {
-  color: var(--text) !important;
-  letter-spacing: 1.5px;
-  margin-right: 1rem;
-  transition: 180ms ease-in-out;
-  opacity: 0.9;
+  color: rgba(248, 250, 252, 0.85) !important;
+  letter-spacing: 0.14em !important;
+  font-size: 0.72rem !important;
+  font-weight: 600 !important;
+  transition: color 160ms ease;
 }
 .nav_item:hover {
-  opacity: 1;
-  color: #0891b2 !important;
+  color: #2dd4bf !important;
 }
 
 .nav_item svg {
-  transition: transform 160ms ease;
-  color: var(--text);
+  transition: transform 160ms ease, color 160ms ease;
+  color: rgba(248, 250, 252, 0.85);
 }
 
 .nav_item:hover svg {
   transform: translateY(-1px);
-  color: #0891b2;
+  color: #2dd4bf;
 }

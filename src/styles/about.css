@@ -1,14 +1,13 @@
-/* Resume / About section — light layout (see About.jsx) */
 .about-resume-root {
   scroll-margin-top: 80px;
 }
 
 .about-resume-root .MuiTypography-root {
-  font-family: "Quicksand", system-ui, sans-serif;
+  font-family: "Inter", "Quicksand", system-ui, sans-serif;
 }
 
 .about-resume-root h2,
 .about-resume-root .MuiTypography-h3,
 .about-resume-root .MuiTypography-h4 {
-  font-family: "Varela", "Quicksand", system-ui, sans-serif;
+  font-family: "Inter", "Varela", system-ui, sans-serif;
 }

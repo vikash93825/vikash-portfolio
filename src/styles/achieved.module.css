@@ -1,19 +1,19 @@
 .pro {
-  font-family: "Varela", "Quicksand", sans-serif;
-  font-size: 38;
+  font-family: "Inter", "Varela", sans-serif;
+  font-size: 38px;
   font-weight: bolder;
-  color: #0b1f3a;
+  color: #f8fafc;
 }
 
 .title {
-  font-family: "Varela", "Quicksand", sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: 21px;
   font-weight: bold;
-  color: #0b1f3a;
+  color: #f8fafc;
 }
 
 .txts {
-  font-family: "Quicksand", sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: 21px;
   font-weight: lighter;
 }
@@ -21,6 +21,178 @@
 .achieved {
   background-color: transparent;
   padding-top: 4rem;
-  padding-bottom: 11rem;
-  color: #0b1f3a;
+  padding-bottom: 6rem;
+  color: #f8fafc;
+}
+
+.statGrid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+@media (min-width: 600px) {
+  .statGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 960px) {
+  .statGrid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+.statCard {
+  border-radius: 12px;
+  padding: 1.25rem 1rem;
+  text-align: center;
+  background: rgba(18, 18, 28, 0.65);
+  border: 1px solid rgba(148, 163, 184, 0.14);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+  height: 100%;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.statCard:hover {
+  border-color: rgba(34, 211, 238, 0.28);
+  box-shadow: 0 12px 40px rgba(6, 182, 212, 0.08);
+}
+
+.statValue {
+  font-family: "Inter", sans-serif;
+  font-size: clamp(1.5rem, 4vw, 1.85rem);
+  font-weight: 800;
+  color: #22d3ee;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+.statLabel {
+  font-family: "Inter", sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: #e2e8f0;
+  margin-top: 0.5rem;
+  line-height: 1.35;
+}
+
+.graphCard {
+  border-radius: 14px;
+  padding: 1.35rem 1.25rem 1.5rem;
+  background: rgba(18, 18, 28, 0.72);
+  border: 1px solid rgba(148, 163, 184, 0.14);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4);
+}
+
+.graphHeaderLabel {
+  font-family: "Inter", sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: #cbd5e1;
+}
+
+.graphDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #22d3ee;
+  box-shadow: 0 0 12px rgba(34, 211, 238, 0.65);
+  flex-shrink: 0;
+}
+
+.calendarWrap {
+  overflow-x: auto;
+  margin-top: 0.25rem;
+  padding-bottom: 0.25rem;
+}
+
+.calendarWrap :global(svg) {
+  display: block;
+  min-width: min(100%, 780px);
+}
+
+.calendarWrap :global(text) {
+  fill: #94a3b8 !important;
+}
+
+.findMeTitle {
+  font-family: "Inter", sans-serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #f8fafc;
+  letter-spacing: -0.02em;
+}
+
+.socialCard {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.35rem;
+  padding: 1rem 1.1rem;
+  min-height: 108px;
+  border-radius: 12px;
+  text-decoration: none;
+  color: inherit;
+  background: rgba(18, 18, 28, 0.65);
+  border: 1px solid rgba(148, 163, 184, 0.14);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.32);
+  transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.socialCard:hover {
+  border-color: rgba(34, 211, 238, 0.35);
+  transform: translateY(-2px);
+  box-shadow: 0 14px 36px rgba(6, 182, 212, 0.12);
+}
+
+.socialIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: rgba(34, 211, 238, 0.1);
+  color: #22d3ee;
+}
+
+.socialName {
+  font-family: "Inter", sans-serif;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #f8fafc;
+}
+
+.socialHandle {
+  font-family: "Inter", sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 400;
+  color: #64748b;
+  margin-top: auto;
+}
+
+.socialGrid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1rem;
+}
+
+@media (max-width: 960px) {
+  .socialGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .socialGrid {
+    grid-template-columns: 1fr;
+  }
 }

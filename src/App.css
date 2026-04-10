@@ -8,8 +8,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Monoton&display=swap");
 
 * {
-  font-family: "Quicksand", sans-serif !important;
-  letter-spacing: 0.5px;
+  font-family: "Inter", "Quicksand", system-ui, sans-serif !important;
+  letter-spacing: 0.02em;
   box-sizing: border-box;
 }
 html {
@@ -51,17 +51,17 @@ img {
   padding: 0.8rem 1.05rem;
   border-radius: 999px;
   text-decoration: none;
-  color: white;
+  color: #020617;
   background: var(--brand);
-  border: 1px solid rgba(11, 31, 58, 0.08);
-  box-shadow: 0 10px 28px rgba(11, 31, 58, 0.12);
+  border: 1px solid rgba(45, 212, 191, 0.4);
+  box-shadow: 0 0 24px rgba(45, 212, 191, 0.25);
   transition: transform 180ms ease, filter 180ms ease;
 }
 
 .btn-gradient:hover {
   transform: translateY(-1px);
-  filter: brightness(1.05);
-  color: white;
+  filter: brightness(1.08);
+  color: #020617;
 }
 
 .btn-ghost {
@@ -73,20 +73,20 @@ img {
   border-radius: 999px;
   text-decoration: none;
   color: var(--text);
-  background: rgba(255, 255, 255, 0.7);
-  border: 1px solid var(--border);
-  transition: transform 180ms ease, background 180ms ease, border-color 180ms ease;
+  background: transparent;
+  border: 1px solid rgba(248, 250, 252, 0.35);
+  transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
 }
 
 .btn-ghost:hover {
   transform: translateY(-1px);
-  background: #ffffff;
-  border-color: rgba(43, 184, 224, 0.45);
+  border-color: #2dd4bf;
+  background: rgba(45, 212, 191, 0.08);
   color: var(--text);
 }
 
 .green-text {
-  background: var(--brand);
+  background: linear-gradient(90deg, #2dd4bf, #22d3ee);
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -97,8 +97,8 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Varela", sans-serif !important;
-  letter-spacing: 2px;
+  font-family: "Inter", "Varela", sans-serif !important;
+  letter-spacing: 0.04em;
 }
 
 .pt-6 {
@@ -109,8 +109,8 @@ h6 {
 }
 
 .chonburi-font {
-  font-family: "Varela", sans-serif !important;
-  letter-spacing: 2px;
+  font-family: "Inter", "Varela", sans-serif !important;
+  letter-spacing: 0.04em;
 }
 .cursor-pointer {
   cursor: pointer;
@@ -125,7 +125,7 @@ h6 {
   inset: 0;
   z-index: 0;
   pointer-events: none;
-  opacity: 0.22;
+  opacity: 0.55;
 }
 
 .three-bg canvas {
@@ -137,4 +137,21 @@ h6 {
 .App > * {
   position: relative;
   z-index: 1;
+}
+
+@keyframes hero-orbit-spin {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+.hero-orbit-ring {
+  animation: hero-orbit-spin 120s linear infinite;
+}
+
+.hero-orbit-ring-reverse {
+  animation: hero-orbit-spin 90s linear infinite reverse;
 }

@@ -17,9 +17,8 @@ import "../styles/about.css";
 
 const NAVY = tk.navy;
 const CYAN = tk.cyan;
-const CYAN_SOFT = tk.cyanSoft;
-const SIDEBAR_TOP = tk.cyanPale;
-const SIDEBAR_MID = tk.cyanSoft;
+const SIDEBAR_GRAD =
+  "linear-gradient(180deg, #115e59 0%, #0e7490 48%, #134e4a 100%)";
 const RIBBON = tk.cyanDark;
 
 const resumeRows = [
@@ -61,9 +60,9 @@ function TimelineCard({ side, date, title, body }) {
       sx={{
         p: 2.25,
         height: "100%",
-        borderColor: "rgba(11, 31, 58, 0.14)",
+        borderColor: tk.borderStrong,
         bgcolor: tk.paper,
-        boxShadow: "0 1px 0 rgba(11, 31, 58, 0.04)",
+        boxShadow: "0 8px 32px rgba(0, 0, 0, 0.35)",
         textAlign: isEdu ? { xs: "left", md: "right" } : "left",
       }}
     >
@@ -91,7 +90,7 @@ function TimelineCard({ side, date, title, body }) {
       >
         {title}
       </Typography>
-      <Typography variant="body2" sx={{ color: "rgba(11, 31, 58, 0.72)", lineHeight: 1.6 }}>
+      <Typography variant="body2" sx={{ color: tk.navyMuted, lineHeight: 1.6 }}>
         {body}
       </Typography>
     </Paper>
@@ -105,9 +104,9 @@ function TimelineDot({ variant }) {
         width: 14,
         height: 14,
         borderRadius: "50%",
-        bgcolor: variant === "dark" ? NAVY : CYAN_SOFT,
+        bgcolor: variant === "dark" ? tk.neon : tk.neonBright,
         border: "3px solid #ffffff",
-        boxShadow: `0 0 0 2px ${CYAN_SOFT}`,
+        boxShadow: `0 0 0 2px ${tk.neonDim}`,
         flexShrink: 0,
         zIndex: 2,
       }}
@@ -145,7 +144,7 @@ const About = () => {
             pt: { xs: 5, md: 7 },
             pb: { xs: 8, md: 10 },
             px: 3,
-            background: `linear-gradient(180deg, ${SIDEBAR_TOP} 0%, ${SIDEBAR_MID} 55%, #5ecfff 100%)`,
+            background: SIDEBAR_GRAD,
           }}
         >
           <Box
@@ -185,7 +184,7 @@ const About = () => {
               height: { xs: 260, sm: 288 },
               borderRadius: "32% / 48%",
               border: "4px solid rgba(255,255,255,0.95)",
-              boxShadow: "0 18px 40px rgba(11, 31, 58, 0.18)",
+              boxShadow: "0 18px 40px rgba(0, 0, 0, 0.45)",
               zIndex: 1,
             }}
           />
@@ -207,7 +206,7 @@ const About = () => {
               mt: 1.5,
               maxWidth: 280,
               textAlign: "center",
-              color: "rgba(11, 31, 58, 0.82)",
+              color: "rgba(248, 250, 252, 0.88)",
               fontSize: "0.95rem",
               lineHeight: 1.55,
               zIndex: 1,
@@ -228,8 +227,9 @@ const About = () => {
               borderRadius: 999,
               px: 3,
               fontWeight: 700,
-              bgcolor: NAVY,
-              "&:hover": { bgcolor: "#152a4a" },
+              bgcolor: tk.neon,
+              color: "#020617",
+              "&:hover": { bgcolor: tk.neonBright },
             }}
           >
             View resume
@@ -237,7 +237,7 @@ const About = () => {
         </Grid>
 
         {/* Main resume */}
-        <Grid item xs={12} md={8} lg={8.5} sx={{ bgcolor: tk.paper }}>
+        <Grid item xs={12} md={8} lg={8.5} sx={{ bgcolor: tk.bgAlt }}>
           <Box sx={{ px: { xs: 2, sm: 3, md: 5 }, py: { xs: 4, md: 5 } }}>
             <Typography
               component="h2"
@@ -313,7 +313,7 @@ const About = () => {
                     bottom: 24,
                     width: 3,
                     borderRadius: 1,
-                    bgcolor: CYAN_SOFT,
+                    bgcolor: tk.neon,
                     zIndex: 0,
                   }}
                 />
@@ -329,7 +329,7 @@ const About = () => {
                     bottom: 28,
                     width: 3,
                     borderRadius: 1,
-                    bgcolor: CYAN_SOFT,
+                    bgcolor: tk.neon,
                     zIndex: 0,
                   }}
                 />

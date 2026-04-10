@@ -1,16 +1,18 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
+
 :root {
-  --bg0: #f4f9fc;
-  --bg1: #e8f4fa;
-  --surface: rgba(255, 255, 255, 0.92);
-  --surface-2: #ffffff;
-  --border: rgba(11, 31, 58, 0.12);
-  --text: #0b1f3a;
-  --muted: rgba(11, 31, 58, 0.68);
-  --brand-a: #0b1f3a;
-  --brand-b: #2bb8e0;
+  --bg0: #000000;
+  --bg1: #06060c;
+  --surface: rgba(255, 255, 255, 0.05);
+  --surface-2: rgba(255, 255, 255, 0.08);
+  --border: rgba(148, 163, 184, 0.2);
+  --text: #f8fafc;
+  --muted: #94a3b8;
+  --brand-a: #22d3ee;
+  --brand-b: #2dd4bf;
   --brand: linear-gradient(90deg, var(--brand-b), var(--brand-a));
-  --shadow: 0 12px 40px rgba(11, 31, 58, 0.08);
-  --radius: 16px;
+  --shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+  --radius: 14px;
 }
 
 html,
@@ -20,10 +22,7 @@ body {
 
 body {
   margin: 0;
-  background:
-    radial-gradient(1000px 700px at 12% 8%, rgba(43, 184, 224, 0.18), transparent 55%),
-    radial-gradient(900px 600px at 88% 20%, rgba(8, 145, 178, 0.12), transparent 50%),
-    linear-gradient(180deg, var(--bg0), var(--bg1));
+  background: var(--bg0);
   color: var(--text);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

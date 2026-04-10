@@ -5,8 +5,8 @@ function createStarField({ count, radius }) {
   const positions = new Float32Array(count * 3);
   const colors = new Float32Array(count * 3);
 
-  const colorA = new THREE.Color("#06b6d4");
-  const colorB = new THREE.Color("#7c3aed");
+  const colorA = new THREE.Color("#2dd4bf");
+  const colorB = new THREE.Color("#22d3ee");
   const colorMix = new THREE.Color();
 
   for (let i = 0; i < count; i += 1) {

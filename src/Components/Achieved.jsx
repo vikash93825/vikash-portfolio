@@ -1,8 +1,28 @@
 import React from "react";
-import { Box, Container, Grid, Paper, Stack, Typography } from "@mui/material";
-import styles from "../styles/achieved.module.css";
+import { Box, Container, Link, Stack } from "@mui/material";
+import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 import GitHubCalendar from "react-github-calendar";
+import styles from "../styles/achieved.module.css";
 import { themeTokens } from "../themeTokens";
+
+const GITHUB_USERNAME = "vikash93825";
+
+/** Update these to match your profiles; swap numbers anytime. */
+const STATS = [
+  { value: "7+", label: "Projects Built" },
+  { value: "5+", label: "GitHub Stars" },
+  { value: "28+", label: "GitHub Streak days" },
+];
+
+const calendarTheme = {
+  dark: [
+    "rgba(51, 65, 85, 0.35)",
+    "rgba(34, 211, 238, 0.22)",
+    "rgba(34, 211, 238, 0.42)",
+    "rgba(6, 182, 212, 0.65)",
+    "rgba(34, 211, 238, 0.95)",
+  ],
+};
 
 const Achieved = () => {
   return (
@@ -11,117 +31,77 @@ const Achieved = () => {
       id="achieved"
       className={styles.achieved}
       sx={{
-        bgcolor: themeTokens.bg,
+        bgcolor: themeTokens.darkBg,
         color: "text.primary",
       }}
     >
-      <Container maxWidth="xl" sx={{ pt: 6, pb: 6 }}>
-        <Box sx={{ textAlign: "center", mb: 4 }}>
-          <Typography className={styles.pro} variant="h3">
-            <span className="chonburi-font green-text">Profic</span>iencies
-          </Typography>
-        </Box>
-
-        <Grid container spacing={2.5} sx={{ mb: 5 }}>
-          {[
-            {
-              img: "images/reactApp.png",
-              alt: "react_app",
-              title: "React Apps",
-              desc: "When it comes to react apps I have the strength of Atlas",
-            },
-            {
-              img: "images/frontEnd.png",
-              alt: "front-end",
-              title: "Frontend",
-              desc: "Now just that I can even host the show",
-            },
-            {
-              img: "images/dataStructure.png",
-              alt: "ds",
-              title: "Data Structure",
-              desc: "Putting the right blocks in the right place is just my thing",
-            },
-            {
-              img: "images/backEnd.png",
-              alt: "back-end",
-              title: "Backend",
-              desc: "I am the one who runs the show",
-            },
-          ].map((item) => (
-            <Grid key={item.title} item xs={12} sm={6} md={3}>
-              <Paper sx={{ p: 2.5, textAlign: "center", height: "100%" }}>
-                <Box
-                  component="img"
-                  src={item.img}
-                  alt={item.alt}
-                  sx={{
-                    width: { xs: "52%", md: "56%" },
-                    maxWidth: 200,
-                    mb: 1.5,
-                    filter: "drop-shadow(0 12px 20px rgba(0,0,0,0.35))",
-                  }}
-                />
-                <Typography className={styles.title} variant="h6" sx={{ mb: 1 }}>
-                  {item.title}
-                </Typography>
-                <Typography sx={{ color: "text.secondary" }}>{item.desc}</Typography>
-              </Paper>
-            </Grid>
+      <Container maxWidth="lg" sx={{ pt: 6, pb: 6, px: { xs: 2, sm: 3 } }}>
+        <div className={styles.statGrid}>
+          {STATS.map((item) => (
+            <div key={item.label} className={styles.statCard}>
+              <div className={styles.statValue}>{item.value}</div>
+              <div className={styles.statLabel}>{item.label}</div>
+            </div>
           ))}
-        </Grid>
+        </div>
 
-        <Box sx={{ textAlign: "center", mb: 6 }}>
-          <Box sx={{ overflowX: "auto" }}>
-            <GitHubCalendar
-              username="vikash93825"
-              blockSize={16}
-              blockMargin={4}
-              color="hsl(192, 78%, 32%)"
-            />
-          </Box>
-        </Box>
-
-        <Box sx={{ textAlign: "center", mb: 3 }}>
-          <Typography className={styles.pro} variant="h3">
-            <span className="chonburi-font green-text">Pro</span>gress
-          </Typography>
-        </Box>
-
-        <Grid container spacing={2.5} justifyContent="center" sx={{ textAlign: "center" }}>
-          {[
-            { value: "1500+", label: "Hours of Hands on Coding" },
-            { value: "500+", label: "Commits" },
-            { value: "400+", label: "Hours of Logic Building" },
-            { value: "100+", label: "Hours of Soft Skills" },
-          ].map((item) => (
-            <Grid key={item.label} item xs={6} sm={3}>
-              <Stack alignItems="center" spacing={1}>
-                <Box
-                  sx={{
-                    border: `10px solid ${themeTokens.cyanDark}`,
-                    height: 110,
-                    width: 110,
-                    borderRadius: "999px",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    bgcolor: "background.paper",
-                    boxShadow: "0 8px 24px rgba(11, 31, 58, 0.08)",
-                  }}
-                >
-                  <Typography variant="h6" sx={{ fontWeight: 800 }}>
-                    {item.value}
-                  </Typography>
-                </Box>
-                <Typography sx={{ color: "text.secondary" }}>{item.label}</Typography>
+        <Box sx={{ mt: 4 }}>
+          <div className={styles.graphCard}>
+            <Stack
+              direction="row"
+              alignItems="center"
+              justifyContent="space-between"
+              flexWrap="wrap"
+              gap={1.5}
+              sx={{ mb: 2 }}
+            >
+              <Stack direction="row" alignItems="center" spacing={1.25}>
+                <span className={styles.graphDot} aria-hidden />
+                <span className={styles.graphHeaderLabel}>GITHUB CONTRIBUTIONS</span>
               </Stack>
-            </Grid>
-          ))}
-        </Grid>
+              <Link
+                href={`https://github.com/${GITHUB_USERNAME}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                underline="hover"
+                sx={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: 0.5,
+                  color: themeTokens.mutedOnDark,
+                  fontSize: "0.875rem",
+                  fontWeight: 600,
+                  "&:hover": { color: themeTokens.neonBright },
+                }}
+              >
+                {GITHUB_USERNAME}
+                <OpenInNewIcon sx={{ fontSize: 16, opacity: 0.85 }} />
+              </Link>
+            </Stack>
+
+            <div className={styles.calendarWrap}>
+              <GitHubCalendar
+                username={GITHUB_USERNAME}
+                colorScheme="dark"
+                theme={calendarTheme}
+                blockSize={12}
+                blockMargin={3}
+                blockRadius={2}
+                fontSize={11}
+                showWeekdayLabels={["mon", "wed", "fri"]}
+                labels={{
+                  legend: { less: "Less", more: "More" },
+                }}
+              />
+            </div>
+          </div>
+        </Box>
+
+
+
       </Container>
     </Box>
   );
 };
 
-export {Achieved};
+export { Achieved };
