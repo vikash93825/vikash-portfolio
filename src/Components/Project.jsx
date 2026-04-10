@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   Box,
   Button,
@@ -73,26 +73,56 @@ const myProjects = [
 ];
 
 const Project = () => {
+  const sectionRef = useRef(null);
+  const [sectionInView, setSectionInView] = useState(false);
+
+  useEffect(() => {
+    const root = sectionRef.current;
+    if (!root) return undefined;
+
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    if (reduceMotion.matches) {
+      setSectionInView(true);
+      return undefined;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) setSectionInView(true);
+      },
+      { threshold: 0.06, rootMargin: "0px 0px -10% 0px" }
+    );
+    observer.observe(root);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <div className="projects" id="projects">
-      <Container maxWidth="xl" sx={{ pt: 6, pb: 6 }}>
-        <Box className="heading-section" sx={{ textAlign: "center", mb: 4 }}>
-          <Typography variant="h3">
+    <div className="projects" id="projects" ref={sectionRef}>
+      <Container maxWidth="xl" sx={{ pt: 5, pb: 5, px: { xs: 2, sm: 3 } }}>
+        <Box
+          className={`heading-section project-heading-reveal${sectionInView ? " project-heading-reveal--visible" : ""}`}
+          sx={{ textAlign: "center", mb: 3 }}
+        >
+          <Typography variant="h3" sx={{ fontSize: { xs: "1.75rem", sm: "2rem" } }}>
             <span className="chonburi-font green-text">Pro</span>jects
           </Typography>
         </Box>
 
-        <Grid container spacing={3}>
-          {myProjects.map((project) => (
-            <Grid key={project.title} item xs={12} sm={6} md={4}>
+        <Grid container spacing={2.25}>
+          {myProjects.map((project, index) => (
+            <Grid key={project.title} item xs={12} sm={6} md={3}>
               <Card
-                className="project-card"
+                className={`project-card project-card-reveal${sectionInView ? " project-card-reveal--visible" : ""}`}
+                style={{
+                  animationDelay: sectionInView ? `${72 + index * 58}ms` : undefined,
+                }}
                 sx={{
                   height: "100%",
                   display: "flex",
                   flexDirection: "column",
                   overflow: "hidden",
                   bgcolor: "background.paper",
+                  borderRadius: 1,
                 }}
               >
                 <Box sx={{ position: "relative" }} className="img-section">
@@ -100,29 +130,53 @@ const Project = () => {
                     component="img"
                     image={project.image}
                     alt={project.title}
-                    sx={{ height: 210 }}
+                    sx={{ height: 152, objectFit: "cover" }}
                   />
                   <Box className="imageCardEffect" sx={{ pointerEvents: "none" }} />
                 </Box>
 
-                <CardContent sx={{ flexGrow: 1 }}>
-                  <Typography variant="h6" sx={{ fontWeight: 800, mb: 1 }}>
+                <CardContent
+                  className={`project-card-body${sectionInView ? " project-card-body--visible" : ""}`}
+                  style={{
+                    animationDelay: sectionInView ? `${120 + index * 58}ms` : undefined,
+                  }}
+                  sx={{ flexGrow: 1, pt: 1.5, px: 2, pb: 1 }}
+                >
+                  <Typography variant="subtitle1" sx={{ fontWeight: 700, mb: 0.75, lineHeight: 1.35 }}>
                     {project.title}
                   </Typography>
-                  <Typography sx={{ color: "text.secondary" }}>
+                  <Typography
+                    variant="body2"
+                    sx={{
+                      color: "text.secondary",
+                      lineHeight: 1.55,
+                      display: "-webkit-box",
+                      WebkitLineClamp: 3,
+                      WebkitBoxOrient: "vertical",
+                      overflow: "hidden",
+                    }}
+                  >
                     {project.description}
                   </Typography>
                 </CardContent>
 
-                <CardActions sx={{ px: 2, pb: 2 }}>
+                <CardActions sx={{ px: 2, pt: 0, pb: 1.5, gap: 1 }}>
                   <Stack direction="row" spacing={1} sx={{ width: "100%" }}>
                     <Button
                       href={project.source}
                       target="_blank"
                       rel="noreferrer"
                       variant="outlined"
+                      size="small"
                       fullWidth
-                      sx={{ borderRadius: 999 }}
+                      sx={{
+                        borderRadius: 999,
+                        py: 0.65,
+                        fontSize: "0.8125rem",
+                        transition: "transform 0.2s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.2s ease",
+                        "&:hover": { transform: "translateY(-1px)" },
+                        "&:active": { transform: "scale(0.98)" },
+                      }}
                     >
                       Source
                     </Button>
@@ -132,8 +186,16 @@ const Project = () => {
                       rel="noreferrer"
                       variant="contained"
                       color="primary"
+                      size="small"
                       fullWidth
-                      sx={{ borderRadius: 999 }}
+                      sx={{
+                        borderRadius: 999,
+                        py: 0.65,
+                        fontSize: "0.8125rem",
+                        transition: "transform 0.2s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.2s ease",
+                        "&:hover": { transform: "translateY(-1px)" },
+                        "&:active": { transform: "scale(0.98)" },
+                      }}
                     >
                       Demo
                     </Button>
